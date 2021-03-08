@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <title>Learning VUE</title>
+</head>
+
+<body>
+    <h1>Hello, Vue :)</h1>
+
+    <div id="app">
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <!--<span v-if="!showBooks">Show Books</span>-->
+            <span v-else>Show Books</span>
+        </button>
+
+        <div v-if="showBooks">
+            <p>{{ title }} - {{ author }} ({{ age }})</p>
+
+            <button v-on:click="age++">Increase age</button>
+            <button v-on:click="age--">Decrease age</button>
+            <br>
+            <div @click="changeTitle('Oathbringer')">Change title</div>
+        </div>
+
+        <br>
+        <div v-show="showBooks">currently showing books</div>       <!-- sólo cambia el css, no me lo quita del DOM -->
+
+    </div>
+    <script src="app07.js"></script>
+</body>
+
+</html>

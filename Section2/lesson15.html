@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <title>VUE fav Challenge</title>
+    <style>
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+
+        p,
+        h3,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li.fav {
+            background: #ff9ed2;
+            color: white;
+        }
+
+        span.favList {
+            margin-left: 20px;
+            font-size: small;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hello, Vue :)</h1>
+
+    <div id="app">
+        <ul>
+            <li v-for="book in books" :class="{ fav: book.isFav }" @click="handleFav(book)">
+                <img :src="book.img" :alt="book.title">
+                <h3>{{ book.title }}</h3>
+                <p>{{ book.author }}</p>
+            </li>
+        </ul>
+
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide fav books</span>
+            <span v-if="!showBooks">Show favbooks</span>
+        </button>
+
+        <p v-if="showBooks" v-for="book in filteredBooks">
+            <span v-if="book.isFav" class="favList">{{ book.title }}<br></span>
+        </p>
+    </div>
+
+
+    <script src="app15.js"></script>
+</body>
+
+</html>
