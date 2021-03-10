@@ -15,9 +15,9 @@ export default {
     }
   },
   mounted() {
-    if (this.score < 300) {
+    if (this.score < 260) {
       this.rank = "2fast 2furious"
-    } else if (this.score < 500) {
+    } else if (this.score < 440) {
       this.rank = "rapid reflexes"
     } else {
       this.rank = "snail pace..."
