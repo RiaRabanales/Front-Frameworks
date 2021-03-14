@@ -1,0 +1,16 @@
+{
+    "projects": [
+      {
+        "id": 1,
+        "title": "Head of Mimiron",
+        "details": "Ulduar",
+        "complete": false
+      },
+      {
+        "id": 2,
+        "title": "Kor'kron Scorpyron",
+        "details": "Siege of Orgrimmar Mythic diff.",
+        "complete": true
+      }
+    ]
+  }
