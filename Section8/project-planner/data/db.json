@@ -2,14 +2,26 @@
     "projects": [
       {
         "id": 1,
-        "title": "Head of Mimiron",
-        "details": "Ulduar",
+        "title": "Mimiron's Head",
+        "details": "YoggSaron @ Ulduar",
         "complete": false
       },
       {
         "id": 2,
-        "title": "Kor'kron Scorpyron",
-        "details": "Siege of Orgrimmar Mythic diff.",
+        "title": "Ko'kron Juggernaut",
+        "details": "Garrosh Hellscream @ Siege of Orgrimmar Mythic diff.",
+        "complete": true
+      },
+      {
+        "id": 3,
+        "title": "Invincible",
+        "details": "Arthas @ ICC Heroic 25players",
+        "complete": true
+      },
+      {
+        "id": 4,
+        "title": "Ironhoof Destroyer",
+        "details": "Blackhand @ Blackrock Foundry Mythic diff.",
         "complete": true
       }
     ]
