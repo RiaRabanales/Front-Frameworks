@@ -6,14 +6,16 @@
 
 <script>
 export default {
+  props: ["id"],
+  /* No me hace falta porque tengo el prop:
     data() {
         return {
             id: this.$route.params.id
         }
     }
-}
+    */
+};
 </script>
 
 <style>
-
 </style>
