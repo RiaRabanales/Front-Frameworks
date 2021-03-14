@@ -14,6 +14,8 @@
 </template>
 
 <script>
+//para trabajar con json server: npm install json-server
+//para lanzarlo en terminal: npx json-server --watch data/db.json
 export default {
   methods: {
     redirect() {

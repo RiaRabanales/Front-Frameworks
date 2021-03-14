@@ -5,6 +5,7 @@ import NotFound from '../views/NotFound.vue'
 import Jobs from '../views/jobs/Jobs.vue'
 import JobDetails from '../views/jobs/JobDetails.vue'
 
+// Para ver lazy loading, vid.53
 const routes = [
   {
     path: '/',
