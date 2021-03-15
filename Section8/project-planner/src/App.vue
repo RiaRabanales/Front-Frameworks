@@ -1,7 +1,17 @@
 <template>
   <!-- Para lanzar db: npx json-server --watch data/db.json -->
+  <Navbar />
   <router-view/>
 </template>
+
+<script>
+import Navbar from './components/Navbar.vue'
+
+export default {
+  components: { Navbar }
+}
+</script>
+
 
 <style>
 body {
