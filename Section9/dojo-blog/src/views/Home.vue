@@ -1,43 +1,31 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <input type="text" v-model="search">
-    <p class="muted">search term - {{ search }}</p>
-    <hr>
-    <div v-for="name in filteredNames" :key="name">
-      {{ name }}
-    </div>
-    
+    <PostList v-if="showPosts" :posts="posts" />
+    <button @click="showPosts = !showPosts">toggle posts</button>
+    <button @click="posts.pop()">delete last post</button>
   </div>
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import PostList from '../components/PostList.vue'
+import { ref } from "vue";
 
 export default {
   name: "Home",
- 
+  components: { PostList },
   setup() {
-    const search = ref('');
-    const names = ref(['fairë', 'unfairë', 'pandako', 'arte', 'pulpako', 'ryette', 'mianmian', 'retako', 'nelyo'])
+    const posts = ref([
+      { title: "patata", body: "Lorem ipsum buah que buenas estan asi fritas con bien de aceite y un montón de sal es q es tremendo tiooo pero tambien estan ricas las lays al unto de sal y las pringles y todo eso buah", id: 1 },
+      { title: "patata pero frita", body: "Lorem ipsum frito", id: 2 },
+    ]);
 
-    const filteredNames = computed(() => {
-      return names.value.filter((name) => name.includes(search.value)
-      );
-    })
-    
-    return { search, filteredNames };
+    const showPosts = ref(true)
+
+    return { posts, showPosts };
   },
 };
 </script>
 
 <style>
-.muted {
-  color: rgb(177, 177, 177);
-  font-size: 0.8rem;
-}
-hr {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
 </style>
