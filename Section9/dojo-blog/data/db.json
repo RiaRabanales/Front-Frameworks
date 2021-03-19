@@ -19,6 +19,14 @@
         "webdev",
         "coding"
       ]
+    },
+    {
+      "title": "el café deja mal aliento",
+      "body": "pues eso, lo q dice el título",
+      "tags": [
+        "cafe"
+      ],
+      "id": 3
     }
   ]
 }
