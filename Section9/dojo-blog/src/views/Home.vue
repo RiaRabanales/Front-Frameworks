@@ -4,46 +4,36 @@
     <h1>Home</h1>
     <div v-if="error">{{ error }}</div>
     <div v-if="posts.length">
-      <PostList v-if="showPosts" :posts="posts" />
-      <button @click="showPosts = !showPosts">toggle posts</button>
+      <PostList :posts="posts" />
     </div>
-    <div v-else>loading...</div>
+    <div v-else>
+      <Spinner />
+    </div>
   </div>
 </template>
 
 <script>
 import PostList from "../components/PostList.vue";
-import { ref } from "vue";
+import Spinner from "../components/Spinner.vue";
+import getPosts from "../composables/getPosts";
 
 export default {
   name: "Home",
-  components: { PostList },
+  components: { PostList, Spinner },
   setup() {
-    //genero el array para popular luego en load
-    const posts = ref([]);
-    const error = ref(null);
-
-    const load = async () => {
-      try {
-        let data = await fetch("http://localhost:3000/posts");
-        if (!data.ok) {
-          throw Error("no data available");
-        }
-        // Si están correctos pasan de lo anterior:
-        posts.value = await data.json();
-      } catch (err) {
-        error.value = err.message; //así actualizo mi variables de error
-        console.log(error.value);
-      }
-    };
+    //genero el array para popular luego en el load del composable
+    const { posts, error, load } = getPosts();
     load();
 
-    const showPosts = ref(true);
-
-    return { posts, showPosts, error };
+    return { posts, error };
   },
 };
 </script>
 
 <style>
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
 </style>
