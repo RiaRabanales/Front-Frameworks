@@ -21,9 +21,7 @@ export default {
     const route = useRoute(); //así obtengo info de la ruta
     console.log(route);
 
-    //si no tuviera el prop, es lo mismo que: 
-    const { post, error, loadPost } = getPost(props.id); //esto de {} se llama destructurar
-    //const { post, error, loadPost } = getPost(route.params.id);
+    const { post, error, loadPost } = getPost(route.params.id);
     loadPost();
 
     return { post, error };

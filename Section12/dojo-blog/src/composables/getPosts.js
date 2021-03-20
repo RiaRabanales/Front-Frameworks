@@ -1,4 +1,5 @@
-import { ref } from "vue";
+import { ref } from 'vue';
+import { projectFirestore } from '../firebase/config';
 
 const getPosts = () => {
 
@@ -7,16 +8,15 @@ const getPosts = () => {
 
     const load = async () => {
         try {
-            await new Promise(resolve => {
-                setTimeout(resolve, 1600);
-            })
+            //Aquí tomo los datos de la bd; res es un objeto y me interesa la propiedad docs
+            const res = await projectFirestore.collection('posts').get();
+            //Map devuelve un nuevo array basado en res.docs, sobre el q se hace una función
+            posts.value = res.docs.map((doc) => {
+                // ...doc.data es spread syntax: me toma todos los datos
+                //Ojo: en el doc no hay ID: la id es del doc
+                return { ...doc.data(), id: doc.id }
+            });
 
-            let data = await fetch("http://localhost:3000/posts");
-            if (!data.ok) {
-                throw Error("no data available");
-            }
-            // Si están correctos pasan de lo anterior:
-            posts.value = await data.json();
         } catch (err) {
             error.value = err.message; //así actualizo mi variables de error
             console.log(error.value);
