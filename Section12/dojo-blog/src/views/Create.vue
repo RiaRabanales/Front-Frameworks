@@ -8,7 +8,7 @@
       <label>Tags (press enter to add)</label>
       <input @keydown.enter.prevent="handleKeydown" v-model="tag" type="text" />
       <div v-for="tag in tags" :key="tag" class="pill">#{{ tag }}</div>
-      <button>Add Post</button>
+      <button class="add">Add Post</button>
     </form>
   </div>
 </template>
@@ -16,7 +16,7 @@
 <script>
 import { ref } from "vue";
 import { useRouter } from 'vue-router'
-import { projectFirestore } from '../firebase/config';
+import { projectFirestore, timestamp } from '../firebase/config';
 
 export default {
   setup() {
@@ -29,7 +29,7 @@ export default {
 
     const handleKeydown = () => {
       console.log("entra al keydown");
-      tag.value = tag.value.replace(/\s+/g, ""); //quito los espacios en blanco
+      tag.value = tag.value.replace(/\s+/g, "");
       if (!tags.value.includes(tag.value)) {
         tags.value.push(tag.value);
       }
@@ -42,6 +42,7 @@ export default {
         title: title.value,
         body: body.value,
         tags: tags.value,
+        createdAt: timestamp()
       };
       
       const res = await projectFirestore.collection('posts').add(post);
@@ -111,5 +112,9 @@ button {
   padding: 8px;
   border-radius: 20px;
   font-size: 14px;
+}
+button.add {
+  margin: 0 auto;
+  margin-top: 10px;
 }
 </style>

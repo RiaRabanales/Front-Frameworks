@@ -3,6 +3,7 @@
     <h1>The Ria Blog</h1>
     <nav>
       <router-link :to="{ name: 'Home' }">Home</router-link>
+      <router-link :to="{ name: 'RealTime' }">Real-time</router-link>
       <router-link :to="{ name: 'Create' }">Post</router-link>
     </nav>
   </header>
