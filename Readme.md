@@ -2,6 +2,9 @@
 Ria Rabanales // Udemy
 
 ## Comandos relevantes durante el proyecto:
+#### Para crear proyecto:
+> vue create live-chat
+
 #### Para lanzar proyecto:
 > npm run serve
 
