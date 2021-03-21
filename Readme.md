@@ -15,3 +15,6 @@ Ria Rabanales // Udemy
 #### Para json server:
 > npm install json-server
 > npx json-server --watch data/db.json
+
+## Links:
+* Idiomas: https://www.freecodecamp.org/news/how-to-add-internationalization-to-a-vue-application-d9cfdcabb03b/
