@@ -43,7 +43,7 @@ button:disabled {
     cursor: not-allowed;
 }
 
-/* Forms */
+/* Formularios */
 form {
     max-width: 400px;
     margin: 0 auto;
@@ -64,6 +64,8 @@ textarea {
     box-sizing: border-box;
     margin: 20px auto;
 }
+
+/* Clase de error */
 .error {
     color: var(--warning);
     font-size: 14px;
