@@ -10,7 +10,12 @@ Ria Rabanales // Udemy
 
 #### Para firebase:
 > npm install firebase
-
+> npm install -g firebase-tools  (instala el CLI de hosting en el ordenador - 125)
+> firebase login
+> firebase init (para configurar front en el proyecto)
+> npm run build
+> firebase deploy
+> (para actualizar cambios) npm run build + firebase deploy
 
 #### Para json server:
 > npm install json-server
