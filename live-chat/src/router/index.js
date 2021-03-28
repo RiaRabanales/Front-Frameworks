@@ -13,12 +13,23 @@ const requireAuth = (to, from, next) => {
   }
 }
 
+//Para evitar que usuarios ya logeados puedan ver el welcome:
+const requireNoAuth = (to, from, next) => {
+  let user = projectAuth.currentUser;
+  if (user) {
+    next({ name: 'Chatroom'});
+  } else {
+    next();
+  }
+}
+
 //Aquí las rutas habituales:
 const routes = [
   {
     path: '/',
     name: 'Welcome',
-    component: Welcome
+    component: Welcome,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/chatroom',

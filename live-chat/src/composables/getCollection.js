@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { projectFirestore } from '../firebase/config'
 
 const getCollection = (collection) => {
@@ -10,7 +10,7 @@ const getCollection = (collection) => {
         .orderBy('createdAt');
 
     //onSnapshot es como creo un real time listener en mi BBDD
-    collectionRef.onSnapshot((snap) => {
+    const subscription = collectionRef.onSnapshot((snap) => {
         let results = [];
         snap.docs.forEach(doc => {
             //me genero un objeto con todos los datos de cada documento
@@ -28,7 +28,11 @@ const getCollection = (collection) => {
         console.log(err.message);
         documents.value = null;
         error.value = 'Data could not be fetched.'
+    });
 
+    //se activa cuando el componente en que está montado hace unmount; así cierro listeners
+    watchEffect((onInvalidate) => {
+        onInvalidate(() => subscription());
     });
 
     return { documents, error };
