@@ -6,7 +6,7 @@ const useCollection = (collection) => {
     const error = ref(null);
     const pending = ref(false);
 
-    const addDocument = async (doc) => {
+    const addDoc = async (doc) => {
         //aquí intento añadir un documento nuevo a la colección
         error.value = null;
         pending.value = true;
@@ -22,7 +22,7 @@ const useCollection = (collection) => {
         }
     }
 
-    return { error, addDocument, pending };
+    return { error, addDoc, pending };
 };
 
 export default useCollection;
