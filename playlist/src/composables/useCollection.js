@@ -12,8 +12,10 @@ const useCollection = (collection) => {
         pending.value = true;
 
         try {
-            await projectFirestore.collection(collection).add(doc);
+            const res = await projectFirestore.collection(collection).add(doc);
             pending.value = false;
+            //Al crear res paso a tener el objeto que creo en un documento
+            return res;
 
         } catch(err) {
             console.log(err.message);

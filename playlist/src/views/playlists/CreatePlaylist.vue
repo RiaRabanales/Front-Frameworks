@@ -23,12 +23,14 @@ import useStorage from "@/composables/useStorage";
 import useCollection from "@/composables/useCollection";
 import getUser from "@/composables/getUser";
 import { timestamp } from "@/firebase/config";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
     const { filePath, url, uploadImage } = useStorage();
     const { error, addDoc } = useCollection("playlists");
     const { user } = getUser();
+    const router = useRouter();
 
     const title = ref("");
     const description = ref("");
@@ -58,7 +60,7 @@ export default {
         isPending.value = true; //variable para el 'loading'
         await uploadImage(file.value);
         //ver 149: creo la colección para la playlist
-        await addDoc({
+        const res = await addDoc({
           title: title.value,
           description: description.value,
           userId: user.value.uid, //id el usuario
@@ -70,7 +72,8 @@ export default {
         });
         isPending.value = false;
         if (!error.value) {
-          console.log("Playlist ok");
+          //Aquí redirecciono a la pantalla de cada playlist
+          router.push({ name:'PlaylistDetails', params: { id: res.id }})
         }
       }
     };
