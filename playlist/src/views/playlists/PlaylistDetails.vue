@@ -9,6 +9,7 @@
       <h2>{{ playlist.title }}</h2>
       <p class="username">Playlist by {{ playlist.userName }}</p>
       <p class="description">{{ playlist.description }}</p>
+      <button v-if="ownership" @click="handleDelete">Delete Playlist</button>
     </div>
 
     <!-- Lista de canciones -->
@@ -19,7 +20,12 @@
 </template>
 
 <script>
+import useStorage from "@/composables/useStorage";
+import useDocument from "@/composables/useDocument";
 import getDocument from "@/composables/getDocument";
+import getUser from "@/composables/getUser";
+import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   props: ["id"],
@@ -27,8 +33,25 @@ export default {
   setup(props) {
     // toma el objeto document pero le cambia el nombre a playlist
     const { error, document: playlist } = getDocument("playlists", props.id);
+    const { user } = getUser();
+    const { deleteDoc } = useDocument("playlists", props.id);
+    const { deleteImage } = useStorage();
+    const router = useRouter();
 
-    return { error, playlist };
+    const ownership = computed(() => {
+      //se tienen que cumplir las tres condiciones
+      return (
+        playlist.value && user.value && user.value.uid == playlist.value.userId
+      );
+    });
+
+    const handleDelete = async () => {
+      await deleteImage(playlist.value.filePath);
+      await deleteDoc();
+      router.push({ name: 'Home' })
+    };
+
+    return { error, playlist, ownership, handleDelete };
   },
 };
 </script>
@@ -55,7 +78,8 @@ export default {
   min-height: 100%;
   max-height: 200%;
 }
-.playlistInfo {
+.playlistInfo,
+.description {
   text-align: center;
 }
 .playlistInfo h2 {
@@ -68,8 +92,5 @@ export default {
 }
 .username {
   color: #999;
-}
-.description {
-  text-align: justify;
 }
 </style>
