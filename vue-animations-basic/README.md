@@ -25,7 +25,7 @@ Añado al tag ed transition:
 @leave
 @after-leave
 
-## GSAP (a 10)
-
-
-
+## GSAP (l.10)
+Ayuda a las animaciones.
+> npm install gsap
+Y lo importo en mi componente.

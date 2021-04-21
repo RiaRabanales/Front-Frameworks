@@ -2,13 +2,10 @@
   <div class="hook">
     <transition
       appear
-      name="fade"
       @before-enter="beforeEnter"
       @enter="onEnter"
       @after-enter="afterEnter"
-      @before-leave="beforeLeave"
-      @leave="onLeave"
-      @leave-enter="afterLeave"
+      :css="false"
     >
       <h1 v-if="showTitle">Hooks</h1>
     </transition>
@@ -21,39 +18,35 @@
 
 <script>
 import { ref } from "vue";
+import gsap from 'gsap';
 
 export default {
   setup() {
     const showTitle = ref(true)
 
-    const beforeEnter = () => {
-      console.log("before enter");
+    const beforeEnter = (el) => {
+      //console.log("before enter - set initial state");
+      //tengo acceso a el: el elemento que lleva la transición asociada
+      el.style.transform = 'translateY(-60px)';
+      el.style.opacity = 0;
     };
 
-    const onEnter = (el) => {
-      //tengo acceso a el: el elemento que lleva la transición asociada
-      console.log("on enter", el);
+    const onEnter = (el, done) => {
+      //console.log("starting to enter - make transition");
+      gsap.to(el, {
+        duration: 1,
+        y: 0,  //esto me hace un transform del beforeEnter a 0
+        opacity: 1,
+        ease: 'bounce.out',
+        onComplete: done    //así no se me solapan transiciones
+      });
     };
 
     const afterEnter = (el) => {
-      el.style.color = 'green'
-      console.log("after enter (when it finishes fading in)", el);
-    };
+      console.log("after enter - transilitions done");
+    }
 
-    const beforeLeave = (el) => {
-      console.log("before leave", el);
-      el.style.color = 'pink'
-    };
-
-    const onLeave = (el) => {
-      console.log("on leave", el);
-    };
-
-    const afterLeave = (el) => {
-      console.log("after leave", el);
-    };
-
-    return { showTitle, beforeEnter, onEnter, afterEnter, beforeLeave, onLeave, afterLeave };
+    return { showTitle, beforeEnter, onEnter, afterEnter };
   },
 };
 </script>
@@ -73,21 +66,5 @@ export default {
   border-radius: 10px;
   width: 40%;
   box-sizing: border-box;
-}
-
-/* Transiciones */
-.fade-enter-from {
-  opacity: 0;
-}
-
-.fade-enter-active {
-  transition: all 3s ease;
-}
-
-.fade-leave-to {
-  opacity: 0;
-}
-.fade-leave-active {
-  transition: all 3s ease;
 }
 </style>
