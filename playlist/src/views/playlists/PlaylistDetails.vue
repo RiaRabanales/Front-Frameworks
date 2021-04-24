@@ -14,12 +14,15 @@
 
     <!-- Lista de canciones -->
     <div class="songs">
-      <p>song list placeholder</p>
+      <ListSongs :songs="playlist.songs" :ownership="ownership" :playlistId="playlist.id" />
+      <AddSong v-if="ownership" :playlist="playlist" />
     </div>
   </div>
 </template>
 
 <script>
+import AddSong from '@/components/AddSong.vue'
+import ListSongs from '@/components/ListSongs.vue'
 import useStorage from "@/composables/useStorage";
 import useDocument from "@/composables/useDocument";
 import getDocument from "@/composables/getDocument";
@@ -29,7 +32,7 @@ import { useRouter } from "vue-router";
 
 export default {
   props: ["id"],
-
+  components: { AddSong, ListSongs },
   setup(props) {
     // toma el objeto document pero le cambia el nombre a playlist
     const { error, document: playlist } = getDocument("playlists", props.id);
