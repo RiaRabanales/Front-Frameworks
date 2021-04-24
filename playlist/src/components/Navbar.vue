@@ -8,6 +8,8 @@
       <div class="links">
         <div v-if="user">
           <router-link :to="{ name: 'CreatePlaylist' }">New playlist</router-link>
+          <router-link :to="{ name: 'UserPlaylists' }">My playlists</router-link>
+          <span>Hi there, {{ user.displayName }}!</span>
           <button @click="handleLogout">Logout</button>
         </div>
         <div v-else>
@@ -66,5 +68,12 @@ nav .links a,
 button {
   margin-left: 16px;
   font-size: 14px;
+}
+span {
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid #ddd;
 }
 </style>

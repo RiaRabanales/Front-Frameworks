@@ -12,20 +12,25 @@
 <script>
 //import useLogin from '../../composables/useLogin' es lo mismo que: @=source
 import useLogin from "@/composables/useLogin";
-import { ref } from 'vue';
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
-      const { error, login, pending } = useLogin();
+    const { error, login, pending } = useLogin();
+    const router = useRouter();
 
-      const email = ref('');
-      const password = ref('');
+    const email = ref("");
+    const password = ref("");
 
-      const handleSubmit = async () => {
-          const res = await login(email.value, password.value);
+    const handleSubmit = async () => {
+      const res = await login(email.value, password.value);
+      if (!error.value) {
+        router.push({ name: "UserPlaylists" });
       }
+    };
 
-      return { email, password, handleSubmit, error, pending };
+    return { email, password, handleSubmit, error, pending };
   },
 };
 </script>

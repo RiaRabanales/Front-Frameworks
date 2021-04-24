@@ -1,13 +1,18 @@
 import { ref, watchEffect } from 'vue'
 import { projectFirestore } from '../firebase/config'
 
-const getCollection = (collection) => {
+const getCollection = (collection, query) => {
 
     const documents = ref(null);
     const error = ref(null);
 
     let collectionRef = projectFirestore.collection(collection)
         .orderBy('createdAt');
+        //.where() para la query, pero sólo lo uso si lo paso
+
+    if (query) {
+        collectionRef = collectionRef.where(...query);
+    }
 
     //onSnapshot es como creo un real time listener en mi BBDD
     const subscription = collectionRef.onSnapshot((snap) => {
@@ -22,7 +27,7 @@ const getCollection = (collection) => {
         //aquí actualizo los valores
         documents.value = results;
         error.value = null;
-    }, () => {
+    }, err => {
         //esta segunda callback se llama si hay un error
         //sustituye a un try catch
         console.log(err.message);
