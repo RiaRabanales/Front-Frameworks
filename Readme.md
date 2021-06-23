@@ -1,5 +1,5 @@
 ## Autor:
-Ria Rabanales // Udemy
+Ria Rabanales // Udemy //
 Repositorio para prácticas personales en diferentes frameworks de JS (Vue, Angular, ect.)
 
 ## Comandos relevantes en VUE:
