@@ -1,7 +1,8 @@
 ## Autor:
 Ria Rabanales // Udemy
+Repositorio para prácticas personales en diferentes frameworks de JS (Vue, Angular, ect.)
 
-## Comandos relevantes durante el proyecto:
+## Comandos relevantes en VUE:
 #### Para crear proyecto:
 > vue create live-chat
 
@@ -27,3 +28,7 @@ date-fns (120):
 
 ## Links:
 * Idiomas: https://www.freecodecamp.org/news/how-to-add-internationalization-to-a-vue-application-d9cfdcabb03b/
+
+## Comandos relevantes en Angular:
+#### Creación de nuevo proyecto:
+> ng new my-project --no-strict
