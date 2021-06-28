@@ -32,3 +32,5 @@ date-fns (120):
 ## Comandos relevantes en Angular:
 #### Creación de nuevo proyecto:
 > ng new my-project --no-strict
+> ng g c miComponente (para crear nuevo componente)
+> ng serve

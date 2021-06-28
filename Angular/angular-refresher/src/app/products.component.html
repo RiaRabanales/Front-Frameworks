@@ -1,0 +1,13 @@
+<h1>My Products</h1>
+<button (click)="productName = 'Laptop'" (disabled)="isDisabled">Change Product</button>
+<input type="text" [(ngModel)]="productName" />
+<h3>{{ productName }}</h3>
+
+<hr>
+<h2>Product List</h2>
+<input type="text" [(ngModel)]="singleProductName" />
+<button (click)="onAddProduct()">Add Product</button>
+
+<div *ngFor="let product of products">
+    {{ product }}
+</div>
