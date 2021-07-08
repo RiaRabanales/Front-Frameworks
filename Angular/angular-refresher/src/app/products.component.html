@@ -8,6 +8,10 @@
 <input type="text" [(ngModel)]="singleProductName" />
 <button (click)="onAddProduct()">Add Product</button>
 
-<div *ngFor="let product of products">
-    {{ product }}
-</div>
+<!-- con []="" añado comunicación cross-component -->
+<app-product 
+    (productClicked)="onRemoveProduct(product)"
+    *ngFor="let product of products" 
+    [productName]="product"
+>
+</app-product>

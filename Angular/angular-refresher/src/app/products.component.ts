@@ -21,4 +21,9 @@ export class ProductsComponent {
         this.products.push(this.singleProductName);
         this.singleProductName = '';
     }
+
+    onRemoveProduct(productName: string) {
+        // Filtro los elementos del array y quito los que no coinciden con el nombre que paso
+        this.products = this.products.filter(p => p !== productName);
+    }
 }
