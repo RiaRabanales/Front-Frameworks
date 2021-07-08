@@ -1,0 +1,9 @@
+.navHeader {
+    width: 100%;
+    text-align: center;
+}
+
+.navHeader a {
+    margin: 0 auto;
+    padding-left: 10px;
+}
