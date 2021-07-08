@@ -1,5 +1,6 @@
 ## Autor:
 Ria Rabanales // Udemy //
+
 Repositorio para prácticas personales en diferentes frameworks de JS (Vue, Angular, ect.)
 
 ## Comandos relevantes en VUE:
@@ -34,3 +35,7 @@ date-fns (120):
 > ng new my-project --no-strict
 > ng g c miComponente (para crear nuevo componente)
 > ng serve
+
+#### Añadir Angular Material a un proyecto (22)
+Consultar: material.angular.io
+> ng add @angular/material
