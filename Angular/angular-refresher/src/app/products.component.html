@@ -1,17 +1,10 @@
 <h1>My Products</h1>
-<button (click)="productName = 'Laptop'" (disabled)="isDisabled">Change Product</button>
-<input type="text" [(ngModel)]="productName" />
-<h3>{{ productName }}</h3>
 
-<hr>
-<h2>Product List</h2>
-<input type="text" [(ngModel)]="singleProductName" />
-<button (click)="onAddProduct()">Add Product</button>
+<form (ngSubmit)="onAddProduct(f)" #f="ngForm">
+    <input type="text" ngModel name="productName" required />
+    <button type="submit">Add Product</button>
+</form>
 
 <!-- con []="" añado comunicación cross-component -->
-<app-product 
-    (productClicked)="onRemoveProduct(product)"
-    *ngFor="let product of products" 
-    [productName]="product"
->
+<app-product (productClicked)="onRemoveProduct(product)" *ngFor="let product of products" [productName]="product">
 </app-product>
