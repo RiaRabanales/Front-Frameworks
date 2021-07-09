@@ -1,31 +1,32 @@
 <section class="signup-form">
-    <form fxLayout="column" fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-form-field>
-            <input ngModel name="email" type="email" matInput placeholder="Your email" email required #emailInput="ngModel">
+            <input ngModel name="email" type="email" matInput placeholder="Your email" email required
+                #emailInput="ngModel">
             <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty.</mat-error>
             <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid.</mat-error>
         </mat-form-field>
 
         <mat-form-field hintLabel="Should be at least 6 characters long.">
-            <input ngModel name="password" type="password" matInput placeholder="Your password" required minlength="6" #pwInput="ngModel">
+            <input ngModel name="password" type="password" matInput placeholder="Your password" required minlength="6"
+                #pwInput="ngModel">
             <!-- Es lo mismo que hintLabel; ? es para evitar que haya error si es nulo -->
-            <mat-hint align="end">{{ pwInput.value?.length}}/6</mat-hint> 
+            <mat-hint align="end">{{ pwInput.value?.length}}/6</mat-hint>
             <mat-error *ngIf="!pwInput.hasError('required')">Has to be at least 6 characters long.</mat-error>
             <mat-error *ngIf="pwInput.hasError('required')">Field must not be empty.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input 
-                matInput 
-                [matDatepicker]="picker" 
-                placeholder="Your birthdate"
-                [max]="maxDate"
-                [min]="minDate"
-            > <!-- con max establezclo límite para que no entren menores-->
+            <input matInput [matDatepicker]="picker" placeholder="Your birthdate" [max]="maxDate" [min]="minDate" ngModel name="birthdate">
+            <!-- con max establezclo límite para que no entren menores-->
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+        </mat-form-field>
 
-        <button type="submit" mat-raised-button color="primary">Submit</button>
+        <mat-checkbox labelPosition="before" ngModel name="agree" color="primary" required>
+            Agree to Terms and Conditions
+        </mat-checkbox>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
     </form>
 </section>
