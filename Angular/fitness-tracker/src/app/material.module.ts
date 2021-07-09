@@ -9,6 +9,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 const MAT_MODULES = [
     MatButtonModule,
@@ -19,7 +20,8 @@ const MAT_MODULES = [
     MatNativeDateModule,
     MatCheckboxModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatListModule
 ];
 
 @NgModule({
