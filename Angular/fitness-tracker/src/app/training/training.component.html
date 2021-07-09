@@ -1,1 +1,11 @@
-<p>training works!</p>
+<mat-tab-group *ngIf="!ongoingTraining">
+    <!-- Label es el texto, dentro tengo el selector del componente -->
+    <mat-tab label="New Exercise">
+        <app-new-training (trainingStart)="ongoingTraining = true"></app-new-training>
+    </mat-tab>
+    <mat-tab label="Past Exercises">
+        <app-past-trainings></app-past-trainings>
+    </mat-tab>
+  </mat-tab-group>
+
+  <app-current-training *ngIf="ongoingTraining"></app-current-training>
