@@ -1,0 +1,16 @@
+{
+  "name": "netnode",
+  "version": "1.0.0",
+  "description": "NetNinja's Node.js Crash Course",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ria Rabanales",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.21"
+  }
+}

@@ -20,9 +20,11 @@ Repositorio para prácticas personales en diferentes frameworks de JS (Vue, Angu
 > (para actualizar cambios) npm run build + firebase deploy
 
 
-## Comandos relevantes en VUE:
+## Comandos relevantes en NODE:
 > node (lanza node para poder pasarle cualquier código js por consola)
 > node archivo (donde archivo es el nombre de un archivo js sin extensión: lanza el archivo)
+* npm install -g nodemon: para no tener que relanzar el servidor node manualmente (instal. global en la máquina); ahora puedo usar 'nodemon archivo.js'
+* npm install express: para instalar el gestor de rutas express
 
 
 #### Para json server:
