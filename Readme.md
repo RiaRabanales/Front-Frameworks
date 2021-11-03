@@ -20,6 +20,11 @@ Repositorio para prácticas personales en diferentes frameworks de JS (Vue, Angu
 > (para actualizar cambios) npm run build + firebase deploy
 
 
+## Comandos relevantes en VUE:
+> node (lanza node para poder pasarle cualquier código js por consola)
+> node archivo (donde archivo es el nombre de un archivo js sin extensión: lanza el archivo)
+
+
 #### Para json server:
 > npm install json-server
 > npx json-server --watch data/db.json
