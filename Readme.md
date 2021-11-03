@@ -1,7 +1,7 @@
 ## Autor:
-Ria Rabanales // Udemy //
+Ria Rabanales
 
-Repositorio para prácticas personales en diferentes frameworks de JS (Vue, Angular, ect.)
+Repositorio para prácticas personales en diferentes frameworks de JS (Vue, Angular, ect.) y otras tecnologías relacionadas con NodeJS.
 
 
 ## Comandos relevantes en VUE:
@@ -32,6 +32,7 @@ date-fns (120):
 
 ## Links:
 * Idiomas: https://www.freecodecamp.org/news/how-to-add-internationalization-to-a-vue-application-d9cfdcabb03b/
+* NodeJS Crash Course: https://www.youtube.com/watch?v=zb3Qk8SG5Ms&list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU&index=1
 
 
 ## Comandos relevantes en Angular:
