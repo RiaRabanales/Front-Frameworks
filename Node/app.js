@@ -3,25 +3,29 @@ const express = require('express');
 // Creo la instancia de express app
 const app = express();
 
+// Registro mi view engine; buscará en la carpeta views por defecto
+app.set('view engine', 'ejs');
+
 // Escucho requests de localhost
 app.listen(3000);
 
 app.get('/', (req, res) => {
-    //res.send(<p>Homepage</p>); Express deduce así los headers y status codes
-    //para poder tomar bien la ruta relativa paso el directorio como segundo parámetro
-    res.sendFile('./views/index.html', { root: __dirname });
+    const blogs = [
+        {title: 'Patatas fritas ricas', snippet: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'},
+        {title: 'Los mejores sugus son los de piña', snippet: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'},
+        {title: '¿Y si hoy pedimos sushi?', snippet: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.'},
+    ];
+    res.render('index', { title: 'Home', blogs });
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile('./views/about.html', { root: __dirname });
+    res.render('about', { title: 'About' });
 });
 
-// Redirects:
-app.get('/about-us', (req, res) => {
-    res.redirect('about');
+app.get('/blogs/create', (req, res) => {
+    res.render('create', { title: 'Create' });
 });
 
-// Página 404: use es el método típico de middleware. Se lanza sólo si no entra en los anteriores, para todo url.
 app.use((req, res)=> {
-    res.status(404).sendFile('./views/404.html', { root: __dirname });
+    res.status(404).render('404', { title: '404' });
 });

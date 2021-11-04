@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeBlog | <%= title %></title>
+</head>
+<body>
+
+    <nav class="header">
+        <div class="titulo">
+            <h1><a href="/">NodeBlog</a></h1>
+            <p>by Ria Rabanales</p>
+        </div>
+        <ul class="navegacion">
+            <li><a href="/">Blogs</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blogs/create">Postear</a></li>
+        </ul>
+    </nav>
+
+    <nav class="content nuevo">
+        <h2>Nuevo post</h2>
+        <form>
+            <label for="title">Título:</label>
+            <input type="text" id="title" required>
+            <label for="snippet">Titular:</label>
+            <input type="text" id="snippet" required>
+            <label for="body">Contenido:</label>
+            <input type="text" id="body" required>
+            <button>Enviar</button>
+        </form>
+    </nav>
+
+</body>
+</html>

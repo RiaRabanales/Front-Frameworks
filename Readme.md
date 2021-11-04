@@ -25,6 +25,7 @@ Repositorio para prácticas personales en diferentes frameworks de JS (Vue, Angu
 > node archivo (donde archivo es el nombre de un archivo js sin extensión: lanza el archivo)
 * npm install -g nodemon: para no tener que relanzar el servidor node manualmente (instal. global en la máquina); ahora puedo usar 'nodemon archivo.js'
 * npm install express: para instalar el gestor de rutas express
+* npm install ejs: para el gestor de vistas
 
 
 #### Para json server:

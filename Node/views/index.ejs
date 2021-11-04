@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeBlog | <%= title %></title>
+</head>
+<body>
+
+    <nav class="header">
+        <div class="titulo">
+            <h1><a href="/">NodeBlog</a></h1>
+            <p>by Ria Rabanales</p>
+        </div>
+        <ul class="navegacion">
+            <li><a href="/">Blogs</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/blogs/create">Postear</a></li>
+        </ul>
+    </nav>
+
+    <nav class="content main">
+        <h2>Posts</h2>
+
+        <% if (blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+                <h3 class="title"><%= blog.title %></h3>
+                <p class="snippet"><%= blog.snippet %></p>
+            <% }) %>
+        <% } else { %>
+            <p>No hay ningún blog :(</p>
+        <% } %>
+    </nav>
+
+</body>
+</html>
