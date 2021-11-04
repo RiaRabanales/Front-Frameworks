@@ -1,15 +1,15 @@
+//TODO: toca https://www.youtube.com/watch?v=bxsemcrY4gQ&list=PL4cUxeGkcC9jsz4LDYc6kv3ymONOKxwBU&index=9
 const express = require('express');
+const morgan = require('morgan');   //middleware para logger; opciones dev, tiny...
 
 // Creo la instancia de express app, registro view engine y escucho localhost
 const app = express();
 app.set('view engine', 'ejs');
 app.listen(3000);
 
-//Logger middleware
-app.use((req, res, next) => {
-    console.log('New request: ' + req.hostname + ', ' + req.path + ', ' + req.method)
-    next(); //next avanza a la siguiente función
-});
+// Middleware y archivos estáticos (públicos)
+app.use(express.static('public'));  //todo lo que haya en esta carpeta se hace público
+app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
     const blogs = [
