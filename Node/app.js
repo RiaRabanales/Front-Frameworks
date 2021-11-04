@@ -1,13 +1,15 @@
 const express = require('express');
 
-// Creo la instancia de express app
+// Creo la instancia de express app, registro view engine y escucho localhost
 const app = express();
-
-// Registro mi view engine; buscará en la carpeta views por defecto
 app.set('view engine', 'ejs');
-
-// Escucho requests de localhost
 app.listen(3000);
+
+//Logger middleware
+app.use((req, res, next) => {
+    console.log('New request: ' + req.hostname + ', ' + req.path + ', ' + req.method)
+    next(); //next avanza a la siguiente función
+});
 
 app.get('/', (req, res) => {
     const blogs = [
@@ -26,6 +28,7 @@ app.get('/blogs/create', (req, res) => {
     res.render('create', { title: 'Create' });
 });
 
+//404 middleware
 app.use((req, res)=> {
     res.status(404).render('404', { title: '404' });
 });

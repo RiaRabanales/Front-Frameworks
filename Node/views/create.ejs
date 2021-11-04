@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NodeBlog | <%= title %></title>
-</head>
+<%- include('./partials/head.ejs') %>
 <body>
 
-    <nav class="header">
-        <div class="titulo">
-            <h1><a href="/">NodeBlog</a></h1>
-            <p>by Ria Rabanales</p>
-        </div>
-        <ul class="navegacion">
-            <li><a href="/">Blogs</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blogs/create">Postear</a></li>
-        </ul>
-    </nav>
+    <%- include('./partials/nav.ejs') %>
 
-    <nav class="content nuevo">
+    <div class="content create">
         <h2>Nuevo post</h2>
         <form>
             <label for="title">Título:</label>
@@ -30,7 +16,8 @@
             <input type="text" id="body" required>
             <button>Enviar</button>
         </form>
-    </nav>
+    </div>
 
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>
